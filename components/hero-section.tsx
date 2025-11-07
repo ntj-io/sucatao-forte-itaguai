@@ -1,138 +1,79 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Recycle, Leaf, TrendingUp } from "lucide-react"
-import Link from "next/link"
+import { ArrowRight, Sparkles } from "lucide-react"
 
 export function HeroSection() {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
   return (
-    <section className="relative pt-24 pb-32 px-4 overflow-hidden bg-gradient-to-br from-[oklch(0.12_0_0)] via-[oklch(0.15_0.02_240)] to-[oklch(0.12_0_0)]">
-      {/* Elementos decorativos de fundo com as cores da marca */}
-      <div className="absolute top-20 right-0 w-96 h-96 bg-[oklch(0.55_0.22_25)] rounded-full blur-[120px] opacity-20" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-[oklch(0.65_0.18_240)] rounded-full blur-[100px] opacity-20" />
-      <div className="absolute top-1/2 left-1/3 w-72 h-72 bg-[oklch(0.75_0.15_85)] rounded-full blur-[100px] opacity-15" />
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage:
+            "url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-4ddhQTyzCh2a6tPkdfGAnfygrVeshK.png')",
+        }}
+      ></div>
 
-      <div className="container mx-auto relative z-10">
-        <div className="grid lg:grid-cols-12 gap-8 items-center">
-          {/* Conteúdo principal - 7 colunas */}
-          <div className="lg:col-span-7 space-y-8">
-            <div className="flex items-center gap-6">
-              <div className="w-24 h-24 rounded-2xl bg-white/5 backdrop-blur-sm border-2 border-white/10 flex items-center justify-center p-2 hover:scale-105 transition-transform">
-                <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SFI-Dark%20%281%29-yvMp6yhAJCCWzGTsBXzbqd3r2QM9mj.png"
-                  alt="Sucatão Forte Itaguaí Logo"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              {/* Badge animado */}
-              <div className="inline-flex items-center gap-3 px-5 py-3 bg-gradient-to-r from-[oklch(0.55_0.22_25)]/20 to-[oklch(0.75_0.15_85)]/20 border border-[oklch(0.75_0.15_85)]/30 rounded-full backdrop-blur-sm">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-[oklch(0.75_0.15_85)] rounded-full animate-pulse" />
-                  <Recycle size={18} className="text-[oklch(0.75_0.15_85)]" />
-                </div>
-                <span className="text-white/90 text-sm font-medium">Líderes em reciclagem desde 2020</span>
-              </div>
-            </div>
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#157EC2]/50 via-[#1a5d8f]/50 to-[#222222]/90"></div>
 
-            {/* Título principal com destaque criativo */}
-            <div className="space-y-4">
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-[0.95] text-white text-balance">
-                Recicle com
-                <span className="block mt-2 bg-gradient-to-r from-[oklch(0.55_0.22_25)] via-[oklch(0.65_0.18_240)] to-[oklch(0.75_0.15_85)] bg-clip-text text-transparent">
-                  Propósito
-                </span>
-              </h1>
-              <div className="flex items-center gap-3 text-[oklch(0.75_0.15_85)] text-xl font-semibold">
-                <div className="h-1 w-12 bg-gradient-to-r from-[oklch(0.75_0.15_85)] to-transparent rounded-full" />
-                Lucro & Sustentabilidade
-              </div>
-            </div>
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAgTSAwIDIwIEwgNDAgMjAgTSAyMCAwIEwgMjAgNDAgTSAwIDMwIEwgNDAgMzAgTSAzMCAwIEwgMzAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"></div>
 
-            <p className="text-xl md:text-2xl text-white/70 leading-relaxed max-w-2xl text-pretty">
-              Transformamos seus resíduos de <span className="text-[oklch(0.55_0.22_25)] font-semibold">plástico</span>,{" "}
-              <span className="text-[oklch(0.65_0.18_240)] font-semibold">papelão</span> e{" "}
-              <span className="text-[oklch(0.75_0.15_85)] font-semibold">metal</span> em valor real para sua empresa.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Link href="/contato">
-                <Button
-                  size="lg"
-                  className="bg-[oklch(0.55_0.22_25)] hover:bg-[oklch(0.50_0.20_25)] text-white text-lg px-10 py-7 rounded-xl shadow-lg shadow-[oklch(0.55_0.22_25)]/30 hover:shadow-xl hover:shadow-[oklch(0.55_0.22_25)]/40 transition-all"
-                >
-                  Solicitar Coleta Agora
-                  <ArrowRight className="ml-2" size={22} />
-                </Button>
-              </Link>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 text-lg px-10 py-7 rounded-xl backdrop-blur-sm bg-white/5"
-              >
-                Ver Como Funciona
-              </Button>
-            </div>
-
-            {/* Stats em linha */}
-            <div className="flex flex-wrap gap-8 pt-8 border-t border-white/10">
-              <div className="space-y-1">
-                <div className="text-3xl font-bold text-white">1000+</div>
-                <div className="text-sm text-white/60">Toneladas recicladas</div>
-              </div>
-              <div className="space-y-1">
-                <div className="text-3xl font-bold text-white">50+</div>
-                <div className="text-sm text-white/60">Empresas parceiras</div>
-              </div>
-              <div className="space-y-1">
-                <div className="text-3xl font-bold text-white">100%</div>
-                <div className="text-sm text-white/60">Sustentável</div>
-              </div>
-            </div>
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 animate-fade-in">
+            <Sparkles className="w-4 h-4 text-[#FCBE1D]" />
+            <span className="text-white text-sm font-medium">Sustentabilidade e Lucro</span>
           </div>
 
-          {/* Área visual - 5 colunas */}
-          <div className="lg:col-span-5 relative">
-            {/* Cards flutuantes com as categorias */}
-            <div className="relative h-[600px]">
-              {/* Card Plástico */}
-              <div className="absolute top-0 right-0 w-48 bg-gradient-to-br from-[oklch(0.55_0.22_25)] to-[oklch(0.45_0.18_25)] p-6 rounded-2xl shadow-2xl transform hover:scale-105 transition-transform">
-                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-4">
-                  <Recycle className="text-white" size={24} />
-                </div>
-                <h3 className="text-white font-bold text-lg mb-1">Plástico</h3>
-                <p className="text-white/80 text-sm">Coleta especializada</p>
-              </div>
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-in-up leading-tight">
+            Transforme sua <span className="text-[#FCBE1D]">sucata</span> em{" "}
+            <span className="text-[#F54337]">oportunidade!</span>
+          </h1>
 
-              {/* Card Papelão */}
-              <div className="absolute top-32 left-0 w-48 bg-gradient-to-br from-[oklch(0.65_0.18_240)] to-[oklch(0.55_0.15_240)] p-6 rounded-2xl shadow-2xl transform hover:scale-105 transition-transform">
-                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-4">
-                  <Leaf className="text-white" size={24} />
-                </div>
-                <h3 className="text-white font-bold text-lg mb-1">Papelão</h3>
-                <p className="text-white/80 text-sm">Processamento eficiente</p>
-              </div>
+          <p
+            className="text-xl md:text-2xl text-white/90 mb-10 animate-fade-in-up max-w-2xl mx-auto"
+            style={{ animationDelay: "0.2s" }}
+          >
+            Compramos e reciclamos sua sucata com o melhor preço da região.
+          </p>
 
-              {/* Card Metal */}
-              <div className="absolute bottom-20 right-8 w-48 bg-gradient-to-br from-[oklch(0.75_0.15_85)] to-[oklch(0.65_0.12_85)] p-6 rounded-2xl shadow-2xl transform hover:scale-105 transition-transform">
-                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-4">
-                  <TrendingUp className="text-white" size={24} />
-                </div>
-                <h3 className="text-white font-bold text-lg mb-1">Metal</h3>
-                <p className="text-white/80 text-sm">Melhor cotação</p>
-              </div>
-
-              {/* Imagem central */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72">
-                <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl ring-4 ring-white/10">
-                  <img
-                    src="/industrial-recycling-facility-with-metal-plastic-a.jpg"
-                    alt="Reciclagem Industrial"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[oklch(0.12_0_0)]/60 to-transparent" />
-                </div>
-              </div>
-            </div>
+          <div
+            className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up"
+            style={{ animationDelay: "0.4s" }}
+          >
+            <Button
+              size="lg"
+              onClick={() => scrollToSection("contact")}
+              className="bg-gradient-to-r from-[#F54337] to-[#FCBE1D] hover:shadow-2xl hover:shadow-[#F54337]/50 transition-all text-white font-bold text-lg px-8 py-6 animate-pulse-glow"
+            >
+              💰 Vender minha sucata
+              <ArrowRight className="ml-2" />
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => scrollToSection("about")}
+              className="border-2 border-white text-white hover:bg-white hover:text-[#157EC2] font-bold text-lg px-8 py-6"
+            >
+              Saiba mais sobre o Sucatão
+            </Button>
           </div>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2">
+          <div className="w-1 h-3 bg-white/50 rounded-full"></div>
         </div>
       </div>
     </section>

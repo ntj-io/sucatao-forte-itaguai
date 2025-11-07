@@ -1,154 +1,74 @@
 "use client"
-import {
-  Trash2,
-  FileText,
-  Wrench,
-  Cpu,
-  Package,
-  Droplet,
-  Box,
-  Battery,
-  Cable,
-  Monitor,
-  Smartphone,
-  Printer,
-  Zap,
-  Layers,
-} from "lucide-react"
-import { useState } from "react"
+
+import { useInView } from "@/hooks/use-in-view"
+import { Button } from "@/components/ui/button"
+import { Box, Zap, CircleDot, Wrench, Battery, Cpu } from "lucide-react"
 
 const materials = [
-  { icon: Trash2, name: "PET", category: "plastico" },
-  { icon: Package, name: "PEAD", category: "plastico" },
-  { icon: Droplet, name: "PVC", category: "plastico" },
-  { icon: Box, name: "PP", category: "plastico" },
-  { icon: Layers, name: "PS", category: "plastico" },
-  { icon: FileText, name: "Ondulado", category: "papelao" },
-  { icon: FileText, name: "Liso", category: "papelao" },
-  { icon: FileText, name: "Caixas", category: "papelao" },
-  { icon: FileText, name: "Kraft", category: "papelao" },
-  { icon: Wrench, name: "Alumínio", category: "metal" },
-  { icon: Wrench, name: "Cobre", category: "metal" },
-  { icon: Wrench, name: "Ferro", category: "metal" },
-  { icon: Wrench, name: "Aço Inox", category: "metal" },
-  { icon: Zap, name: "Bronze", category: "metal" },
-  { icon: Battery, name: "Baterias", category: "eletronico" },
-  { icon: Cable, name: "Cabos", category: "eletronico" },
-  { icon: Monitor, name: "Monitores", category: "eletronico" },
-  { icon: Cpu, name: "Placas", category: "eletronico" },
-  { icon: Smartphone, name: "Celulares", category: "eletronico" },
-  { icon: Printer, name: "Impressoras", category: "eletronico" },
+  { icon: Box, name: "Ferro", color: "#8B4513" },
+  { icon: Zap, name: "Alumínio", color: "#C0C0C0" },
+  { icon: CircleDot, name: "Cobre", color: "#B87333" },
+  { icon: Wrench, name: "Latão", color: "#DAA520" },
+  { icon: Battery, name: "Baterias", color: "#4CAF50" },
+  { icon: Cpu, name: "Eletrônicos", color: "#2196F3" },
 ]
 
-const categoryColors = {
-  plastico: "oklch(0.55_0.22_25)",
-  papelao: "oklch(0.65_0.18_240)",
-  metal: "oklch(0.75_0.15_85)",
-  eletronico: "oklch(0.60_0.20_140)",
-}
-
-const categoryLabels = {
-  plastico: "Plástico",
-  papelao: "Papelão",
-  metal: "Metal",
-  eletronico: "Eletrônicos",
-}
-
 export function MaterialsSection() {
-  const [filter, setFilter] = useState<string>("todos")
-
-  const filteredMaterials = filter === "todos" ? materials : materials.filter((m) => m.category === filter)
+  const { ref, isInView } = useInView()
 
   return (
-    <section
-      id="materiais"
-      className="py-24 px-4 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden"
-    >
-      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[oklch(0.55_0.22_25)] rounded-full blur-[150px] opacity-10" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[oklch(0.65_0.18_240)] rounded-full blur-[150px] opacity-10" />
+    <section id="materials" className="py-20 relative overflow-hidden">
+      {/* Metallic Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300"></div>
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDAsMCwwLDAuMDMpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-50"></div>
 
-      <div className="container mx-auto relative z-10">
-        <div className="text-center mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-4">
-            <Layers className="w-4 h-4 text-primary" />
-            <span className="text-sm font-semibold text-primary">Materiais Aceitos</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground text-balance">O Que Reciclamos</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Processamos uma ampla variedade de materiais com tecnologia de ponta
+      <div className="container mx-auto px-4 relative z-10">
+        <div ref={ref} className="text-center mb-16">
+          <h2
+            className={`text-4xl md:text-5xl font-bold mb-4 text-[#222222] transition-all duration-1000 ${
+              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+          >
+            Tipos de <span className="text-gradient">materiais</span> aceitos
+          </h2>
+          <p
+            className={`text-lg text-gray-700 max-w-2xl mx-auto transition-all duration-1000 ${
+              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+            style={{ transitionDelay: "0.2s" }}
+          >
+            Trabalhamos com diversos tipos de sucata e materiais recicláveis
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          <button
-            onClick={() => setFilter("todos")}
-            className={`px-6 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 ${
-              filter === "todos"
-                ? "bg-foreground text-background shadow-lg scale-105"
-                : "bg-muted/50 text-foreground hover:bg-muted hover:scale-105 border border-border"
-            }`}
-          >
-            Todos ({materials.length})
-          </button>
-          {Object.entries(categoryLabels).map(([key, label]) => {
-            const count = materials.filter((m) => m.category === key).length
-            return (
-              <button
-                key={key}
-                onClick={() => setFilter(key)}
-                className={`px-6 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 border-2 ${
-                  filter === key ? "shadow-lg scale-105" : "hover:scale-105"
-                }`}
-                style={{
-                  backgroundColor: filter === key ? categoryColors[key as keyof typeof categoryColors] : "transparent",
-                  borderColor: categoryColors[key as keyof typeof categoryColors],
-                  color: filter === key ? "white" : categoryColors[key as keyof typeof categoryColors],
-                }}
-              >
-                {label} ({count})
-              </button>
-            )
-          })}
-        </div>
-
-        <div className="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto">
-          {filteredMaterials.map((material, index) => {
-            const Icon = material.icon
-            const color = categoryColors[material.category as keyof typeof categoryColors]
-            return (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12">
+          {materials.map((material, index) => (
+            <div
+              key={index}
+              className={`bg-white rounded-xl p-6 text-center hover:scale-110 transition-all duration-500 metallic-hover cursor-pointer shadow-lg ${
+                isInView ? "opacity-100 scale-100" : "opacity-0 scale-95"
+              }`}
+              style={{ transitionDelay: `${index * 100}ms` }}
+            >
               <div
-                key={index}
-                className="group relative inline-flex items-center gap-2.5 px-5 py-3 bg-card border-2 rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer"
-                style={{ borderColor: color }}
+                className="w-16 h-16 mx-auto rounded-full mb-4 flex items-center justify-center"
+                style={{ backgroundColor: `${material.color}20` }}
               >
-                {/* Glow effect on hover */}
-                <div
-                  className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300"
-                  style={{ backgroundColor: color }}
-                />
-
-                <div
-                  className="relative w-8 h-8 rounded-full flex items-center justify-center"
-                  style={{ backgroundColor: `${color}15` }}
-                >
-                  <Icon size={16} style={{ color }} />
-                </div>
-                <span className="relative text-sm font-semibold text-foreground whitespace-nowrap">
-                  {material.name}
-                </span>
+                <material.icon size={32} style={{ color: material.color }} />
               </div>
-            )
-          })}
+              <h3 className="font-bold text-lg text-[#222222]">{material.name}</h3>
+            </div>
+          ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-muted/50 rounded-full border border-border">
-            <Zap className="w-5 h-5 text-primary" />
-            <span className="text-sm text-muted-foreground">
-              Processamento rápido e eficiente • Cotação em tempo real • Coleta agendada
-            </span>
-          </div>
+        <div className="text-center">
+          <Button
+            size="lg"
+            className="bg-gradient-to-r from-[#FCBE1D] to-[#F54337] hover:shadow-2xl hover:shadow-[#FCBE1D]/50 transition-all font-bold text-lg px-8 py-6 animate-pulse-glow"
+            onClick={() => window.open("https://wa.me/5521999999999", "_blank")}
+          >
+            Tenho esse material → Falar no WhatsApp
+          </Button>
         </div>
       </div>
     </section>
