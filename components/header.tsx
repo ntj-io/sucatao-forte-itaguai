@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(window.scrollY > 50)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
@@ -37,8 +37,8 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg shadow-[#157EC2]/10" : "bg-transparent"
+      className={`fixed flex items-center w-full z-50 transition-all duration-300 ${
+        isScrolled ? "bg-white/95 shadow-lg shadow-sucatao-blue/10" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -51,7 +51,7 @@ export function Header() {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-sm font-medium hover:text-[#F54337] transition-colors"
+                className="text-sm font-medium hover:text-sucatao-red transition-colors"
               >
                 {item.label}
               </button>
@@ -61,40 +61,71 @@ export function Header() {
           <div className="hidden lg:block">
             <Button
               onClick={() => scrollToSection("contact")}
-              className="bg-gradient-to-r from-[#F54337] to-[#FCBE1D] hover:shadow-lg hover:shadow-[#F54337]/50 transition-all font-semibold"
+              className="bg-gradient-to-r from-sucatao-red to-sucatao-yellow hover:shadow-lg hover:shadow-sucatao-red/50 transition-all font-semibold"
             >
-              💬 Fale com a gente
+              Fale com a gente
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="lg:hidden p-2">
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden p-2 relative z-60"
+            aria-label="Toggle menu"
+          >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t">
-          <nav className="container mx-auto px-4 py-4 flex flex-col gap-4">
-            {menuItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="text-left py-2 hover:text-[#F54337] transition-colors"
-              >
-                {item.label}
-              </button>
-            ))}
+      <div
+        className={`fixed top-0 right-0 h-full w-1/2 bg-gradient-to-br from-sucatao-blue to-sucatao-blue/90 backdrop-blur-lg shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden z-50 ${
+          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="flex flex-col h-full">
+          {/* Logo Section */}
+          <div className="p-6 border-b border-white/20">
+            <div className="w-full h-20 bg-white/10 rounded-lg flex items-center justify-center backdrop-blur-sm">
+              <span className="text-white font-bold text-lg text-center px-4">Sucatão Forte Itaguaí</span>
+            </div>
+          </div>
+
+          {/* Menu Items */}
+          <nav className="flex-1 overflow-y-auto py-6 px-4">
+            <div className="flex flex-col gap-2">
+              {menuItems.map((item, index) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="text-left py-3 px-4 text-white hover:bg-white/10 rounded-lg transition-all hover:translate-x-1 font-medium"
+                  style={{
+                    animation: isMobileMenuOpen ? `slideIn 0.3s ease-out ${index * 0.05}s both` : "none",
+                  }}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </nav>
+
+          {/* CTA Button */}
+          <div className="p-6 border-t border-white/20">
             <Button
               onClick={() => scrollToSection("contact")}
-              className="bg-gradient-to-r from-[#F54337] to-[#FCBE1D] w-full"
+              className="w-full bg-gradient-to-r from-sucatao-red to-sucatao-yellow hover:shadow-lg hover:shadow-sucatao-yellow/30 transition-all font-semibold"
             >
-              💬 Fale com a gente
+              Fale com a gente
             </Button>
-          </nav>
+          </div>
         </div>
+      </div>
+
+      {isMobileMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm lg:hidden z-40"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
       )}
     </header>
   )

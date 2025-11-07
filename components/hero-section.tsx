@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Sparkles } from "lucide-react"
+import Image from "next/image"
 
 export function HeroSection() {
   const scrollToSection = (id: string) => {
@@ -13,13 +14,13 @@ export function HeroSection() {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div
+      <Image
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage:
-            "url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-4ddhQTyzCh2a6tPkdfGAnfygrVeshK.png')",
-        }}
-      ></div>
+        src="/entrada.jpg"
+        layout="fill"
+        objectFit="cover"
+        alt="Imagem de entrada do Sucatão"
+      />
 
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#157EC2]/50 via-[#1a5d8f]/50 to-[#222222]/90"></div>
@@ -62,7 +63,7 @@ export function HeroSection() {
               size="lg"
               variant="outline"
               onClick={() => scrollToSection("about")}
-              className="border-2 border-white text-white hover:bg-white hover:text-[#157EC2] font-bold text-lg px-8 py-6"
+              className="border-2 border-white text-sucatao-blue hover:bg-white font-bold text-lg px-4 py-6"
             >
               Saiba mais sobre o Sucatão
             </Button>

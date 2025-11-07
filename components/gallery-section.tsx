@@ -45,7 +45,7 @@ export function GallerySection() {
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <img
-                src={`/.jpg?height=400&width=400&query=${image.query}`}
+                src={`/materiais.jpg`}
                 alt={image.alt}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
