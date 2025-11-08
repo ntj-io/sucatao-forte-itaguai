@@ -84,6 +84,7 @@
 @theme inline {
   --font-sans: var(--font-poppins), system-ui, sans-serif;
   --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --font-russo-one: var(--font-russo-one), system-ui, sans-serif;
   /* Adding Sucatão custom colors to theme */
   --color-sucatao-red: #f54337;
   --color-sucatao-yellow: #fcbe1d;
@@ -216,6 +217,13 @@
 
 .text-gradient {
   background: linear-gradient(135deg, #f54337, #fcbe1d);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient2 {
+  background: linear-gradient(135deg, #157ec2, #f54337);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

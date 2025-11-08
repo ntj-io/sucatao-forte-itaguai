@@ -71,7 +71,7 @@ export function LocationSection() {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[500px] ring-4 ring-[#FCBE1D]/50">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58887.36469267252!2d-43.79!3d-22.85!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDUxJzAwLjAiUyA0M8KwNDcnMjQuMCJX!5e0!3m2!1sen!2sbr!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3676.043166838783!2d-43.77094542393432!3d-22.87486373673233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9bf8f5b6a7201b%3A0x34603474809451bb!2sR.%20Haroldo%20Rodrigues%20de%20Jesus%2C%20435%20-%20Monte%20Serrat%2C%20Itagua%C3%AD%20-%20RJ%2C%2023810-840!5e0!3m2!1spt-BR!2sbr!4v1762580492965!5m2!1spt-BR!2sbr"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
@@ -41,9 +42,17 @@ export function Header() {
         isScrolled ? "bg-white/95 shadow-lg shadow-sucatao-blue/10" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4"> 
         <div className="flex items-center justify-between h-20">
-          <div className="text-2xl font-bold text-gradient">Sucatão Forte Itaguaí</div>
+          <div className="flex items-center gap-4 cursor-pointer" onClick={() => scrollToSection("hero")}>
+            <Image
+              src={`${isScrolled ? '/SFI.svg' : 'SFI-Dark.svg'}`}
+              alt="Sucatão Forte Itaguaí"
+              width={40}
+              height={40}
+            />
+            <div className={`text-2xl font-russo-one ${isScrolled ? 'text-sucatao-black' : 'text-white'}`}>Sucatão Forte Itaguaí</div>
+          </div>
 
           {/* Desktop Menu */}
           <nav className="hidden lg:flex items-center gap-6">
@@ -51,7 +60,7 @@ export function Header() {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-sm font-medium hover:text-sucatao-red transition-colors"
+                className={`text-sm font-medium hover:text-sucatao-blue hover:cursor-pointer hover:scale-105 transition-all ${isScrolled ? 'text-sucatao-black' : 'text-white'}`}
               >
                 {item.label}
               </button>

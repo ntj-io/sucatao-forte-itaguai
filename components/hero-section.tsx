@@ -3,8 +3,45 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Sparkles } from "lucide-react"
 import Image from "next/image"
+import { useEffect, useRef } from "react"
 
 export function HeroSection() {
+   const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    // 🔧 Diminui a velocidade de reprodução
+    video.playbackRate = 0.4
+
+    // 🎯 Função para pausar ou reproduzir dependendo da visibilidade
+    const handleVisibility = () => {
+      const rect = video.getBoundingClientRect()
+      const isVisible =
+        rect.top < window.innerHeight && rect.bottom > 0 // parte visível na tela
+
+      if (isVisible) {
+        if (video.paused) video.play()
+      } else {
+        if (!video.paused) video.pause()
+      }
+    }
+
+    // Adiciona o listener de scroll e visibilidade
+    window.addEventListener("scroll", handleVisibility)
+    window.addEventListener("resize", handleVisibility)
+
+    // Executa a primeira checagem
+    handleVisibility()
+
+    // Limpeza do event listener
+    return () => {
+      window.removeEventListener("scroll", handleVisibility)
+      window.removeEventListener("resize", handleVisibility)
+    }
+  }, [])
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
@@ -14,16 +51,19 @@ export function HeroSection() {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <Image
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        src="/entrada.jpg"
-        layout="fill"
-        objectFit="cover"
-        alt="Imagem de entrada do Sucatão"
+      <video
+        src="/apresentacao2.mp4" // coloque seu vídeo em /public
+        ref={videoRef}
+        
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
       />
 
       {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#157EC2]/50 via-[#1a5d8f]/50 to-[#222222]/90"></div>
+      <div className="absolute inset-0 bg-linear-to-br from-[#157EC2]/40 via-[#1a5d8f]/40 to-sucatao-black/70"></div>
 
       {/* Grid Pattern Overlay */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAgTSAwIDIwIEwgNDAgMjAgTSAyMCAwIEwgMjAgNDAgTSAwIDMwIEwgNDAgMzAgTSAzMCAwIEwgMzAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"></div>
@@ -54,7 +94,7 @@ export function HeroSection() {
             <Button
               size="lg"
               onClick={() => scrollToSection("contact")}
-              className="bg-gradient-to-r from-[#F54337] to-[#FCBE1D] hover:shadow-2xl hover:shadow-[#F54337]/50 transition-all text-white font-bold text-lg px-8 py-6 animate-pulse-glow"
+              className="bg-linear-to-r from-sucatao-red to-sucatao-yellow hover:scale-105 hover:cursor-pointer transition-all text-sucatao-white font-bold text-lg px-8 py-6 animate-pulse-glow"
             >
               💰 Vender minha sucata
               <ArrowRight className="ml-2" />
@@ -63,7 +103,7 @@ export function HeroSection() {
               size="lg"
               variant="outline"
               onClick={() => scrollToSection("about")}
-              className="border-2 border-white text-sucatao-blue hover:bg-white font-bold text-lg px-4 py-6"
+              className="bg-sucatao-blue text-sucatao-white font-bold text-lg px-4 py-6 hover:scale-105 hover:cursor-pointer border-0 transition-all"
             >
               Saiba mais sobre o Sucatão
             </Button>
