@@ -17,21 +17,21 @@ const russoOne = Russo_One({
 })
 
 export const metadata: Metadata = {
-  title: "Sucatão Forte Itaguaí - Reciclagem e Compra de Sucatas",
-  description: "Compramos e reciclamos sua sucata com o melhor preço da região. Sustentabilidade e pagamento justo.",
+  title: "Sucatão Forte Itaguaí - Compra e venda de Sucatas",
+  description: "Compramos e vendemos sucata com o melhor preço da região. Sustentabilidade e pagamento justo.",
   generator: "v0.app",
   icons: {
     icon: [
       {
-        url: "/icon-light-32x32.png",
+        url: "/SFI-Dark.svg",
         media: "(prefers-color-scheme: light)",
       },
       {
-        url: "/icon-dark-32x32.png",
+        url: "/SFI.svg",
         media: "(prefers-color-scheme: dark)",
       },
       {
-        url: "/icon.svg",
+        url: "/SFI-Dark.svg",
         type: "image/svg+xml",
       },
     ],

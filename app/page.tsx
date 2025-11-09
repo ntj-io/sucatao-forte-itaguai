@@ -27,7 +27,7 @@ export default function Home() {
       <LocationSection />
       <FinalCTASection />
       <Footer />
-      <WhatsAppButton />
+      {/* <WhatsAppButton /> */}
     </main>
   )
 }

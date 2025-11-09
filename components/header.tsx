@@ -20,7 +20,15 @@ export function Header() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      const offset = -80 // altura header
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY
+      const offsetPosition = elementPosition + offset
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      })
+
       setIsMobileMenuOpen(false)
     }
   }
@@ -70,7 +78,7 @@ export function Header() {
           <div className="hidden lg:block">
             <Button
               onClick={() => scrollToSection("contact")}
-              className="bg-gradient-to-r from-sucatao-red to-sucatao-yellow hover:shadow-lg hover:shadow-sucatao-red/50 transition-all font-semibold"
+              className="bg-sucatao-blue hover:bg-sucatao-blue hover:scale-105 hover:cursor-pointer hover:shadow-lg hover:shadow-sucatao-black/50 transition-all font-semibold"
             >
               Fale com a gente
             </Button>
@@ -122,7 +130,7 @@ export function Header() {
           <div className="p-6 border-t border-white/20">
             <Button
               onClick={() => scrollToSection("contact")}
-              className="w-full bg-gradient-to-r from-sucatao-red to-sucatao-yellow hover:shadow-lg hover:shadow-sucatao-yellow/30 transition-all font-semibold"
+              className="w-full bg-linear-to-r from-sucatao-red to-sucatao-yellow hover:shadow-lg hover:shadow-sucatao-yellow/30 transition-all font-semibold"
             >
               Fale com a gente
             </Button>

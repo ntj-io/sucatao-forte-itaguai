@@ -3,12 +3,12 @@
 import { useInView } from "@/hooks/use-in-view"
 
 const images = [
-  { query: "industrial scrap metal yard with piles of metal", alt: "Pátio de sucata" },
-  { query: "trucks loading scrap metal", alt: "Caminhões carregando" },
-  { query: "recycled metal materials organized", alt: "Materiais organizados" },
-  { query: "industrial metal crusher machine", alt: "Equipamento de reciclagem" },
-  { query: "workers handling scrap metal safely", alt: "Equipe trabalhando" },
-  { query: "warehouse with sorted metal materials", alt: "Galpão de materiais" },
+  { src: "/patio.jpg", alt: "Pátio de sucata" },
+  { src: "/caminhoes.jpg", alt: "Caminhões carregando" },
+  { src: "/materiais.jpg", alt: "Materiais organizados" },
+  { src: "/equipamento.jpg", alt: "Equipamento de reciclagem" },
+  { src: "/equipe.jpg", alt: "Equipe trabalhando" },
+  { src: "/materiais2.jpg", alt: "Galpão de materiais" },
 ]
 
 export function GallerySection() {
@@ -45,7 +45,7 @@ export function GallerySection() {
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <img
-                src={`/materiais.jpg`}
+                src={image.src}
                 alt={image.alt}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
