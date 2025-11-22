@@ -17,6 +17,8 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // NOTE: don't lock body scroll here — menu should work even when page is scrolled.
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
@@ -45,17 +47,29 @@ export function Header() {
     { label: "Localização", id: "location" },
   ]
 
+  const menuItemsMobile = [
+    { label: "Início", id: "hero" },
+    { label: "Sobre", id: "about" },
+    { label: "Serviços", id: "services" },
+    { label: "Materiais", id: "materials" },
+    { label: "Como Funciona", id: "how-it-works" },
+    { label: "Benefícios", id: "benefits" },
+    { label: "Galeria", id: "gallery" },
+    { label: "Localização", id: "location" },
+  ]
+
   return (
+    <>
     <header
-      className={`fixed flex items-center w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-sucatao-white backdrop-blur-lg shadow-lg shadow-sucatao-yellow/30" : "bg-sucatao-white"
+      className={`fixed bg-sucatao-white flex items-center w-full z-40 transition-all duration-300 ${
+        isScrolled ? "shadow-lg shadow-sucatao-yellow/30" : ""
       }`}
     >
       <div className="container mx-auto px-4"> 
         <div className="flex items-center justify-between h-20">
           <div className="hidden 2xl:block text-2xl font-russo-one text-sucatao-black">Sucatão Forte Itaguaí</div>
           
-          <div className={`2xl:hidden bg-sucatao-white px-2 ${isScrolled ? "shadow-lg shadow-sucatao-black/20 py-6 rounded-b-full" : ""}`}
+          <div className={`2xl:hidden bg-sucatao-white px-2 ${isScrolled ? "shadow-lg shadow-sucatao-black/20 py-6 rounded-b-full hover:cursor-pointer hover:scale-105" : ""}`}
             onClick={() => scrollToSection("hero")}
           >
             <Image
@@ -92,8 +106,6 @@ export function Header() {
                 ) : (
                   item.label
                 )}
-
-                
               </button>
             ))}
           </nav>
@@ -107,66 +119,85 @@ export function Header() {
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 relative z-60"
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </div>
-
-      <div
-        className={`fixed top-0 right-0 h-full w-1/2 bg-linear-to-br from-sucatao-blue to-sucatao-blue/90 backdrop-blur-lg shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden z-50 ${
-          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="flex flex-col h-full">
-          {/* Logo Section */}
-          <div className="p-6 border-b border-white/20">
-            <div className="w-full h-20 bg-white/10 rounded-lg flex items-center justify-center backdrop-blur-sm">
-              <span className="text-white font-bold text-lg text-center px-4">Sucatão Forte Itaguaí</span>
-            </div>
-          </div>
-
-          {/* Menu Items */}
-          <nav className="flex-1 overflow-y-auto py-6 px-4">
-            <div className="flex flex-col gap-2">
-              {menuItems.map((item, index) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-left py-3 px-4 text-white hover:bg-white/10 rounded-lg transition-all hover:translate-x-1 font-medium"
-                  style={{
-                    animation: isMobileMenuOpen ? `slideIn 0.3s ease-out ${index * 0.05}s both` : "none",
-                  }}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          </nav>
-
-          {/* CTA Button */}
-          <div className="p-6 border-t border-white/20">
-            <Button
-              onClick={() => scrollToSection("contact")}
-              className="w-full bg-linear-to-r from-sucatao-red to-sucatao-yellow hover:shadow-lg hover:shadow-sucatao-yellow/30 transition-all font-semibold"
+          {!isMobileMenuOpen && (
+            <button
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="lg:hidden p-2 fixed top-5 right-5 z-50 hover:cursor-pointer hover:scale-105"
+              aria-label="Open menu"
             >
-              Fale com a gente
-            </Button>
-          </div>
+              <Menu size={24} color="black" />
+            </button>
+          )}
         </div>
       </div>
-
-      {isMobileMenuOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm lg:hidden z-40"
-          onClick={() => setIsMobileMenuOpen(false)}
-        />
-      )}
     </header>
+
+
+    { /* MOBILE MENU */ }      
+    <div
+      className={`fixed top-0 right-0 h-full w-[70%] bg-sucatao-white shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden z-50 ${
+        isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+      }`}
+      role="dialog"
+      aria-modal={isMobileMenuOpen}
+    >
+      <button
+        onClick={() => setIsMobileMenuOpen(false)}
+        className="absolute top-5 right-5 p-2 z-50"
+        aria-label="Close menu"
+      >
+        <X size={24} color="black" />
+      </button>
+
+      <div className="flex flex-col h-full">
+        <div className="p-6 border-b border-black/10">
+          <div className="w-full h-20 shadow-lg shadow-sucatao-black/30 rounded-lg flex items-center justify-center backdrop-blur-sm">
+            <Image
+              src="/SFI.svg"
+              alt="Sucatão Forte Itaguaí"
+              width={48}
+              height={48}
+              className="object-contain"
+              onClick={() => scrollToSection("hero")}
+            />
+          </div>
+        </div>
+
+        <nav className="flex-1 overflow-y-auto py-6 px-4">
+          <div className="flex flex-col gap-2">
+            {menuItemsMobile.map((item, index) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="text-left py-3 px-4 text-sucatao-black hover:bg-sucatao-red/10 rounded-lg transition-all hover:translate-x-1 font-medium"
+                style={{
+                  animation: isMobileMenuOpen ? `slideIn 0.3s ease-out ${index * 0.05}s both` : "none",
+                }}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </nav>
+
+        <div className="p-6 border-t border-black/10">
+          <Button
+            onClick={() => scrollToSection("contact")}
+            className="w-full bg-linear-to-r from-sucatao-red to-sucatao-yellow hover:shadow-lg hover:shadow-sucatao-yellow/30 transition-all font-semibold"
+          >
+            Fale com a gente
+          </Button>
+        </div>
+      </div>
+    </div>
+
+    {isMobileMenuOpen && (
+      <div
+        className="fixed inset-0 bg-black/50 backdrop-blur-sm lg:hidden z-40"
+        onClick={() => setIsMobileMenuOpen(false)}
+      />
+    )}
+
+    </>
   )
 }

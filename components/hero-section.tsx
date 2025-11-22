@@ -56,18 +56,18 @@ export function HeroSection() {
 
       {/* 🧠 Conteúdo central */}
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           <HeroTitle />
 
           <p
-            className="text-xl md:text-2xl text-white/90 mb-10 animate-fade-in-up max-w-2xl mx-auto"
+            className="text-sm sm:text-2xl text-white/90 mb-10 animate-fade-in-up max-w-2xl mx-auto px-6"
             style={{ animationDelay: "0.2s" }}
           >
             Compramos e vendemos sucata com o melhor preço da região.
           </p>
 
           <div
-            className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up"
             style={{ animationDelay: "0.4s" }}
           >
             <Button
@@ -81,7 +81,7 @@ export function HeroSection() {
             <Button
               size="lg"
               onClick={() => scrollToSection("about")}
-              className="bg-sucatao-blue  font-bold text-lg px-4 py-6 hover:scale-105 hover:cursor-pointer border-0 transition-all"
+              className="bg-sucatao-blue font-bold text-lg px-4 py-6 hover:scale-105 hover:cursor-pointer border-0 transition-all"
             >
               Saiba mais sobre o Sucatão
             </Button>
@@ -90,7 +90,7 @@ export function HeroSection() {
       </div>
 
       {/* ⬇️ Indicador de scroll */}
-      <div className="absolute bottom-15 h-11 w-42 bg-neutral-100 rounded-t-2xl">
+      <div className="absolute bottom-15 h-11 w-42 bg-sucatao-white rounded-t-2xl">
 
       </div>
 

@@ -37,12 +37,12 @@ export default function HeroTitle() {
   }, [])
 
   return (
-    <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight animate-fade-in-up">
+    <h1 className="px-8 text-3xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight animate-fade-in-up">
       <span className="text-sucatao-yellow">Transforme</span> sua{" "}
       <span className="text-sucatao-blue">sucata</span> em{" "}
-      <span className="text-[#F54337]">
+      <span className="text-sucatao-red">
         {words[index].substring(0, subIndex)}
-        <span className="inline-block w-[2px]">
+        <span className="inline-block w-0.5">
           {blink ? "|" : " "}
         </span>
       </span>
