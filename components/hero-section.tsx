@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Sparkles } from "lucide-react"
+import { ArrowRight, DollarSign } from "lucide-react"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import HeroTitle from "./hero-title"
@@ -32,25 +32,27 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative h-screen flex items-center justify-center overflow-hidden bg-sucatao-white"
     >
       {slides.map((src, i) => (
-        <Image
+        <div
           key={i}
-          src={src}
-          alt={`slide-${i}`}
-          fill
-          priority={i === 0}
-          className={`object-cover transition-opacity duration-1000 ease-in-out ${
+          className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[80%] rounded-3xl overflow-hidden transition-opacity duration-1000 ease-in-out ${
             currentIndex === i ? "opacity-100" : "opacity-0"
           }`}
-        />
+        >
+          <Image
+            src={src}
+            alt={`slide-${i}`}
+            fill
+            priority={i === 0}
+            className="object-cover"
+          />
+
+          {/* Overlay escuro somente sobre a imagem */}
+          <div className="absolute inset-0 bg-black/50"></div>
+        </div>
       ))}
-
-      <div className="absolute inset-0 bg-black/65"></div>
-
-      {/* 🧩 Padrão de grade sobreposto */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAgTSAwIDIwIEwgNDAgMjAgTSAyMCAwIEwgMjAgNDAgTSAwIDMwIEwgNDAgMzAgTSAzMCAwIEwgMzAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"></div>
 
       {/* 🧠 Conteúdo central */}
       <div className="container mx-auto px-4 relative z-10">
@@ -73,14 +75,13 @@ export function HeroSection() {
               onClick={() => scrollToSection("contact")}
               className="bg-linear-to-r from-sucatao-red to-sucatao-yellow hover:scale-105 hover:cursor-pointer transition-all text-sucatao-white font-bold text-lg px-8 py-6 animate-pulse-glow"
             >
-              💰 Vender minha sucata
-              <ArrowRight className="ml-2" />
+              <DollarSign className="inline-block" /> 
+              Vender minha sucata
             </Button>
             <Button
               size="lg"
-              variant="outline"
               onClick={() => scrollToSection("about")}
-              className="bg-sucatao-blue text-sucatao-white font-bold text-lg px-4 py-6 hover:scale-105 hover:cursor-pointer border-0 transition-all"
+              className="bg-sucatao-blue  font-bold text-lg px-4 py-6 hover:scale-105 hover:cursor-pointer border-0 transition-all"
             >
               Saiba mais sobre o Sucatão
             </Button>
@@ -89,9 +90,13 @@ export function HeroSection() {
       </div>
 
       {/* ⬇️ Indicador de scroll */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-3 bg-white/50 rounded-full"></div>
+      <div className="absolute bottom-15 h-11 w-42 bg-neutral-100 rounded-t-2xl">
+
+      </div>
+
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 border-2 border-black/50 rounded-full flex items-start justify-center p-2">
+          <div className="w-1 h-3 bg-black/50 rounded-full"></div>
         </div>
       </div>
     </section>

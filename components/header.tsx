@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(window.scrollY > 50)
+  const [isScrolled, setIsScrolled] = useState<boolean>(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
@@ -38,6 +38,7 @@ export function Header() {
     { label: "Sobre", id: "about" },
     { label: "Serviços", id: "services" },
     { label: "Materiais", id: "materials" },
+    { label: "Foto", id: "photo" },
     { label: "Como Funciona", id: "how-it-works" },
     { label: "Benefícios", id: "benefits" },
     { label: "Galeria", id: "gallery" },
@@ -47,30 +48,52 @@ export function Header() {
   return (
     <header
       className={`fixed flex items-center w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/95 shadow-lg shadow-sucatao-blue/10" : "bg-transparent"
+        isScrolled ? "bg-sucatao-white backdrop-blur-lg shadow-lg shadow-sucatao-yellow/30" : "bg-sucatao-white"
       }`}
     >
       <div className="container mx-auto px-4"> 
         <div className="flex items-center justify-between h-20">
-          <div className="flex items-center gap-4 cursor-pointer" onClick={() => scrollToSection("hero")}>
+          <div className="hidden 2xl:block text-2xl font-russo-one text-sucatao-black">Sucatão Forte Itaguaí</div>
+          
+          <div className={`2xl:hidden bg-sucatao-white px-2 ${isScrolled ? "shadow-lg shadow-sucatao-black/20 py-6 rounded-b-full" : ""}`}
+            onClick={() => scrollToSection("hero")}
+          >
             <Image
-              src={`${isScrolled ? '/SFI.svg' : 'SFI-Dark.svg'}`}
+              src="/SFI.svg"
               alt="Sucatão Forte Itaguaí"
               width={40}
               height={40}
+              className="inline-block mx-4"
             />
-            <div className={`text-2xl font-russo-one ${isScrolled ? 'text-sucatao-black' : 'text-white'}`}>Sucatão Forte Itaguaí</div>
           </div>
 
           {/* Desktop Menu */}
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center">
             {menuItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`text-sm font-medium hover:text-sucatao-blue hover:cursor-pointer hover:scale-105 transition-all ${isScrolled ? 'text-sucatao-black' : 'text-white'}`}
+                className={`text-sm font-medium hover:text-sucatao-blue hover:cursor-pointer hover:scale-105 transition-all text-sucatao-black mr-6`}
               >
-                {item.label}
+                {item.id === "photo" ? (
+                  <div className={`hidden 2xl:block bg-sucatao-white px-2 ${isScrolled ? "shadow-lg shadow-sucatao-black/20 py-6 rounded-b-full" : ""}`}
+                    onClick={() => scrollToSection("hero")}
+                  >
+                    <Image
+                      src="/SFI.svg"
+                      alt="Sucatão Forte Itaguaí"
+                      width={40}
+                      height={40}
+                      className="inline-block mx-4"
+                    />
+                  </div>
+                ) : item.id === "how-it-works" ? (
+                  <div className="-ml-6 2xl:ml-0">{item.label}</div>
+                ) : (
+                  item.label
+                )}
+
+                
               </button>
             ))}
           </nav>
@@ -96,7 +119,7 @@ export function Header() {
       </div>
 
       <div
-        className={`fixed top-0 right-0 h-full w-1/2 bg-gradient-to-br from-sucatao-blue to-sucatao-blue/90 backdrop-blur-lg shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden z-50 ${
+        className={`fixed top-0 right-0 h-full w-1/2 bg-linear-to-br from-sucatao-blue to-sucatao-blue/90 backdrop-blur-lg shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden z-50 ${
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
