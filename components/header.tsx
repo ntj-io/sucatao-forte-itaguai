@@ -2,12 +2,14 @@
 
 import Image from "next/image"
 import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState<boolean>(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,31 +40,31 @@ export function Header() {
   const menuItems = [
     { label: "Início", id: "hero" },
     { label: "Sobre", id: "about" },
-    { label: "Serviços", id: "services" },
     { label: "Materiais", id: "materials" },
     { label: "Foto", id: "photo" },
     { label: "Como Funciona", id: "how-it-works" },
     { label: "Benefícios", id: "benefits" },
-    { label: "Galeria", id: "gallery" },
+    // { label: "Galeria", id: "gallery" },
     { label: "Localização", id: "location" },
+    { label: "Contato", id: "contact" },
   ]
 
   const menuItemsMobile = [
     { label: "Início", id: "hero" },
     { label: "Sobre", id: "about" },
-    { label: "Serviços", id: "services" },
     { label: "Materiais", id: "materials" },
     { label: "Como Funciona", id: "how-it-works" },
     { label: "Benefícios", id: "benefits" },
-    { label: "Galeria", id: "gallery" },
+    // { label: "Galeria", id: "gallery" },
     { label: "Localização", id: "location" },
+    { label: "Contato", id: "contact" },
   ]
 
   return (
     <>
     <header
       className={`fixed bg-sucatao-white flex items-center w-full z-40 transition-all duration-300 ${
-        isScrolled ? "shadow-lg shadow-sucatao-yellow/30" : ""
+        isScrolled ? "shadow-lg shadow-sucatao-blue/30" : ""
       }`}
     >
       <div className="container mx-auto px-4"> 
@@ -112,7 +114,7 @@ export function Header() {
 
           <div className="hidden lg:block">
             <Button
-              onClick={() => scrollToSection("contact")}
+              onClick={() => router.push("/contato")}
               className="bg-sucatao-blue hover:bg-sucatao-blue hover:scale-105 hover:cursor-pointer hover:shadow-lg hover:shadow-sucatao-black/50 transition-all font-semibold"
             >
               Fale com a gente
@@ -121,7 +123,7 @@ export function Header() {
 
           {!isMobileMenuOpen && (
             <button
-              onClick={() => setIsMobileMenuOpen(true)}
+              onClick={() => (true)}
               className="lg:hidden p-2 fixed top-5 right-5 z-50 hover:cursor-pointer hover:scale-105"
               aria-label="Open menu"
             >

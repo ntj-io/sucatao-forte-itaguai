@@ -31,7 +31,7 @@ export function GallerySection() {
             }`}
             style={{ transitionDelay: "0.2s" }}
           >
-            Conheça nossas instalações e operações
+            Conheça nossas instalações e operações.
           </p>
         </div>
 

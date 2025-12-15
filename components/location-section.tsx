@@ -8,16 +8,24 @@ export function LocationSection() {
   const { ref, isInView } = useInView()
 
   return (
-    <section id="location" className="py-20 bg-[#F9F9F9]">
+    <section id="location" className="py-20 bg-neutral-100">
       <div className="container mx-auto px-4">
-        <div ref={ref} className="text-center mb-16">
+        <div ref={ref} className="text-center mb-12">
           <h2
             className={`text-4xl md:text-5xl font-bold mb-4 text-[#222222] transition-all duration-1000 ${
               isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            Onde <span className="text-gradient">estamos</span>
+            Onde <span className="text-gradient">estamos?</span>
           </h2>
+          <p
+            className={`text-lg text-gray-600 max-w-2xl mx-auto transition-all duration-1000 ${
+              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+            style={{ transitionDelay: "0.2s" }}
+          >
+            Visite nossa unidade em Itaguaí ou entre em contato conosco!
+          </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">

@@ -1,13 +1,16 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
+
+import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+
 import { MapPin, Phone, Mail, Clock, ArrowLeft } from "lucide-react"
 import Link from "next/link"
+
 
 export default function ContatoPage() {
   const [formData, setFormData] = useState({
@@ -182,6 +185,8 @@ export default function ContatoPage() {
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   )
 }

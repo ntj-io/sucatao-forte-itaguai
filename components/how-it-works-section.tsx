@@ -7,25 +7,25 @@ const steps = [
   {
     icon: Phone,
     title: "Você entra em contato",
-    description: "Fale conosco pelo WhatsApp ou telefone",
+    description: "Caso não consiga ir ao local, fale conosco pelo WhatsApp.",
     color: "#F54337",
   },
   {
     icon: Search,
     title: "Avaliamos sua sucata",
-    description: "Nossa equipe faz a análise e oferece o melhor preço",
+    description: "Nossa equipe faz a análise e oferece o melhor preço.",
     color: "#FCBE1D",
   },
   {
     icon: Truck,
     title: "Fazemos a coleta",
-    description: "Buscamos sua sucata no local combinado",
+    description: "Se necessário, buscamos sua sucata no local combinado.",
     color: "#157EC2",
   },
   {
     icon: Banknote,
     title: "Você recebe na hora",
-    description: "Pagamento rápido e seguro após a coleta",
+    description: "Pagamento rápido e seguro após pesagem.",
     color: "#4CAF50",
   },
 ]
@@ -34,15 +34,15 @@ export function HowItWorksSection() {
   const { ref, isInView } = useInView()
 
   return (
-    <section id="how-it-works" className="py-20 bg-white">
+    <section id="how-it-works" className="py-20 bg-neutral-100">
       <div className="container mx-auto px-4">
         <div ref={ref} className="text-center mb-16">
           <h2
-            className={`text-4xl md:text-5xl font-bold mb-4 text-[#222222] transition-all duration-1000 ${
+            className={`text-4xl md:text-5xl font-bold mb-4 text-sucatao-black transition-all duration-1000 ${
               isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            Como <span className="text-gradient">funciona</span> o processo
+            Como <span className="text-gradient">funciona</span> o processo?
           </h2>
           <p
             className={`text-lg text-gray-600 max-w-2xl mx-auto transition-all duration-1000 ${
@@ -50,13 +50,13 @@ export function HowItWorksSection() {
             }`}
             style={{ transitionDelay: "0.2s" }}
           >
-            Simples, rápido e transparente
+            Simples, rápido e transparente!
           </p>
         </div>
 
         <div className="relative max-w-6xl mx-auto">
           {/* Connection Line */}
-          <div className="hidden lg:block absolute top-24 left-0 right-0 h-1 bg-gradient-to-r from-[#F54337] via-[#FCBE1D] via-[#157EC2] to-[#4CAF50] opacity-20"></div>
+          <div className="hidden lg:block absolute top-24 left-0 right-0 h-1 bg-linear-to-r from-[#F54337] via-[#FCBE1D] via-[#157EC2] to-[#4CAF50] opacity-20"></div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {steps.map((step, index) => (
@@ -77,7 +77,7 @@ export function HowItWorksSection() {
                   <div className="absolute top-8 left-1/2 -translate-x-1/2 text-6xl font-bold opacity-5">
                     {index + 1}
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-[#222222]">{step.title}</h3>
+                  <h3 className="text-xl font-bold mb-3 text-sucatao-black">{step.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{step.description}</p>
                 </div>
               </div>

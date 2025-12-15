@@ -9,16 +9,29 @@ export function FinalCTASection() {
 
   return (
     <section id="contact" className="py-32 relative overflow-hidden">
-      {/* Dark Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#222222] via-[#157EC2] to-[#F54337]"></div>
+      {/* VIDEO BACKGROUND */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        src="/caminhao sucatao.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
+
+      {/* OVERLAY (escurece + dá identidade visual) */}
+      <div className="absolute inset-0 bg-black/65"/>
+
+      {/* LIGHT BLOBS (opcional, mantém seu efeito atual) */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-10 right-10 w-96 h-96 bg-[#FCBE1D] rounded-full blur-3xl animate-float"></div>
         <div
           className="absolute bottom-10 left-10 w-80 h-80 bg-[#F54337] rounded-full blur-3xl animate-float"
           style={{ animationDelay: "1s" }}
-        ></div>
+        />
       </div>
 
+      {/* CONTENT */}
       <div className="container mx-auto px-4 relative z-10">
         <div ref={ref} className="max-w-4xl mx-auto text-center">
           <h2
@@ -26,7 +39,8 @@ export function FinalCTASection() {
               isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            Não deixe sua sucata parada — <span className="text-[#FCBE1D]">transforme em lucro</span> hoje mesmo!
+            Não deixe sua sucata parada —{" "}
+            <span className="text-[#FCBE1D]">transforme em lucro</span> hoje mesmo!
           </h2>
 
           <p
@@ -46,7 +60,7 @@ export function FinalCTASection() {
           >
             <Button
               size="lg"
-              className="bg-gradient-to-r from-[#FCBE1D] to-[#F54337] hover:shadow-2xl hover:shadow-[#FCBE1D]/50 transition-all font-bold text-lg px-10 py-7 animate-pulse-glow"
+              className="bg-linear-to-r from-[#FCBE1D] to-[#F54337] hover:shadow-2xl hover:shadow-[#FCBE1D]/50 transition-all font-bold text-lg px-10 py-7 animate-pulse-glow hover:cursor-pointer hover:scale-105"
               onClick={() => window.open("https://wa.me/5521999999999", "_blank")}
             >
               💬 Fale com o Sucatão agora

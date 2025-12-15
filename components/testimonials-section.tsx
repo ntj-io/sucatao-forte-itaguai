@@ -7,21 +7,19 @@ import { useEffect, useState } from "react"
 
 const testimonials = [
   {
-    name: "João Silva",
-    company: "Metalúrgica Silva",
     text: "Excelente atendimento! Pagamento rápido e preço justo. Recomendo muito o Sucatão Forte.",
     rating: 5,
   },
   {
-    name: "Maria Santos",
-    company: "Indústria Santos",
     text: "Trabalho com eles há anos. Sempre pontuais na coleta e transparentes nos valores.",
     rating: 5,
   },
   {
-    name: "Carlos Oliveira",
-    company: "Construções Oliveira",
-    text: "Melhor empresa de reciclagem da região. Profissionalismo e compromisso ambiental.",
+    text: "Preço bom e um excelente atendimento!!!!!!",
+    rating: 5,
+  },
+  {
+    text: "Fazem um ótimo trabalho com responsabilidade e compromisso. Dá gosto ver o quanto crescem e cuidam do meio ambiente com esse serviço essencial! ♻️💪",
     rating: 5,
   },
 ]
@@ -38,7 +36,7 @@ export function TestimonialsSection() {
   }, [])
 
   return (
-    <section className="py-20 bg-[#F9F9F9]">
+    <section className="py-20 bg-sucatao-white">
       <div className="container mx-auto px-4">
         <div ref={ref} className="text-center mb-16">
           <h2
@@ -46,7 +44,7 @@ export function TestimonialsSection() {
               isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            O que dizem nossos <span className="text-gradient">clientes</span>
+            O que dizem nossos <span className="text-gradient">clientes?</span>
           </h2>
         </div>
 
@@ -57,34 +55,29 @@ export function TestimonialsSection() {
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
               {testimonials.map((testimonial, index) => (
-                <div key={index} className="w-full flex-shrink-0 px-4">
+                <div key={index} className="w-full shrink-0 px-4">
                   <Card className="p-8 bg-white shadow-xl">
-                    <div className="flex gap-1 mb-4 justify-center">
+                    <div className="flex gap-1 mb-2 justify-center">
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <Star key={i} className="w-5 h-5 fill-[#FCBE1D] text-[#FCBE1D]" />
                       ))}
                     </div>
-                    <p className="text-lg text-gray-700 mb-6 text-center italic leading-relaxed">
+                    <p className="text-lg text-gray-700 text-center italic leading-relaxed">
                       "{testimonial.text}"
                     </p>
-                    <div className="text-center">
-                      <p className="font-bold text-[#222222]">{testimonial.name}</p>
-                      <p className="text-sm text-gray-600">{testimonial.company}</p>
-                    </div>
                   </Card>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Indicators */}
           <div className="flex justify-center gap-2 mt-8">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`w-3 h-3 rounded-full transition-all ${
-                  currentIndex === index ? "bg-[#F54337] w-8" : "bg-gray-300"
+                  currentIndex === index ? "bg-sucatao-red w-8" : "bg-gray-300"
                 }`}
               />
             ))}
