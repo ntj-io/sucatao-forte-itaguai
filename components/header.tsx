@@ -2,14 +2,12 @@
 
 import Image from "next/image"
 import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState<boolean>(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,8 +16,6 @@ export function Header() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
-
-  // NOTE: don't lock body scroll here — menu should work even when page is scrolled.
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
@@ -114,7 +110,7 @@ export function Header() {
 
           <div className="hidden lg:block">
             <Button
-              onClick={() => router.push("/contato")}
+              onClick={() => scrollToSection("contact")}
               className="bg-sucatao-blue hover:bg-sucatao-blue hover:scale-105 hover:cursor-pointer hover:shadow-lg hover:shadow-sucatao-black/50 transition-all font-semibold"
             >
               Fale com a gente
@@ -123,7 +119,7 @@ export function Header() {
 
           {!isMobileMenuOpen && (
             <button
-              onClick={() => (true)}
+              onClick={() => (setIsMobileMenuOpen(true))}
               className="lg:hidden p-2 fixed top-5 right-5 z-50 hover:cursor-pointer hover:scale-105"
               aria-label="Open menu"
             >

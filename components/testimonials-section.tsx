@@ -40,7 +40,7 @@ export function TestimonialsSection() {
       <div className="container mx-auto px-4">
         <div ref={ref} className="text-center mb-16">
           <h2
-            className={`text-4xl md:text-5xl font-bold mb-4 text-[#222222] transition-all duration-1000 ${
+            className={`text-4xl md:text-5xl font-bold mb-4 text-sucatao-black transition-all duration-1000 ${
               isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
@@ -59,7 +59,7 @@ export function TestimonialsSection() {
                   <Card className="p-8 bg-white shadow-xl">
                     <div className="flex gap-1 mb-2 justify-center">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 fill-[#FCBE1D] text-[#FCBE1D]" />
+                        <Star key={i} className="w-5 h-5 fill-sucatao-yellow text-sucatao-yellow" />
                       ))}
                     </div>
                     <p className="text-lg text-gray-700 text-center italic leading-relaxed">

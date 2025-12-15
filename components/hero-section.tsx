@@ -20,13 +20,22 @@ export function HeroSection() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % slides.length)
-    }, 3000) // Muda a cada 3 segundos
+    }, 3000)
     return () => clearInterval(interval)
   }, [slides.length])
 
   const scrollToSection = (id: string) => {
-    const el = document.getElementById(id)
-    if (el) el.scrollIntoView({ behavior: "smooth" })
+    const element = document.getElementById(id)
+    if (element) {
+      const offset = -80 // altura header
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY
+      const offsetPosition = elementPosition + offset
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      })
+    }
   }
 
   return (

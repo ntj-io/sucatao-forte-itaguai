@@ -11,9 +11,9 @@ const redesSociais = [
 
 export function Footer() {
   return (
-    <footer className="bg-sucatao-black text-white py-12">
+    <footer className="bg-sucatao-black text-white py-8">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between mb-6">
+        <div className="flex justify-between mb-4">
           <div>
             <h3 className="text-2xl font-bold text-white mb-4">Sucatão Forte Itaguaí</h3>
             <p className="text-gray-400">Transformando sucata em valor com sustentabilidade e compromisso.</p>
@@ -40,9 +40,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/20 pt-8 text-center text-gray-400">
+        <div className="border-t border-white/20 pt-4 text-center text-gray-400">
           <p>© 2025 Sucatão Forte Itaguaí — Todos os direitos reservados.</p>
-          <p className="text-xs mt-2">37.813.267/0001-08</p>
         </div>
       </div>
     </footer>

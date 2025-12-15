@@ -12,7 +12,7 @@ export function LocationSection() {
       <div className="container mx-auto px-4">
         <div ref={ref} className="text-center mb-12">
           <h2
-            className={`text-4xl md:text-5xl font-bold mb-4 text-[#222222] transition-all duration-1000 ${
+            className={`text-4xl md:text-5xl font-bold mb-4 text-sucatao-black transition-all duration-1000 ${
               isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
@@ -38,7 +38,7 @@ export function LocationSection() {
                   <MapPin className="text-[#F54337]" size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg mb-2 text-[#222222]">Endereço</h3>
+                  <h3 className="font-bold text-lg mb-2 text-sucatao-black">Endereço</h3>
                   <p className="text-gray-600">Itaguaí, Rio de Janeiro</p>
                 </div>
               </div>
@@ -48,7 +48,7 @@ export function LocationSection() {
                   <Phone className="text-[#FCBE1D]" size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg mb-2 text-[#222222]">Telefone</h3>
+                  <h3 className="font-bold text-lg mb-2 text-sucatao-black">Telefone</h3>
                   <p className="text-gray-600">(21) 99999-9999</p>
                 </div>
               </div>
@@ -58,7 +58,7 @@ export function LocationSection() {
                   <Clock className="text-[#157EC2]" size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg mb-2 text-[#222222]">Horário</h3>
+                  <h3 className="font-bold text-lg mb-2 text-sucatao-black">Horário</h3>
                   <p className="text-gray-600">Segunda a Sexta: 8h às 18h</p>
                   <p className="text-gray-600">Sábado: 8h às 12h</p>
                 </div>
@@ -66,7 +66,7 @@ export function LocationSection() {
 
               <Button
                 size="lg"
-                className="w-full bg-gradient-to-r from-[#157EC2] to-[#F54337] hover:shadow-xl font-bold"
+                className="w-full bg-linear-to-r from-[#157EC2] to-[#F54337] hover:shadow-xl font-bold"
                 onClick={() => window.open("https://maps.google.com", "_blank")}
               >
                 Traçar rota

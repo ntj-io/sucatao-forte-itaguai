@@ -20,13 +20,13 @@ export function FinalCTASection() {
       />
 
       {/* OVERLAY (escurece + dá identidade visual) */}
-      <div className="absolute inset-0 bg-black/65"/>
+      <div className="absolute inset-0 bg-black/70"/>
 
       {/* LIGHT BLOBS (opcional, mantém seu efeito atual) */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-10 right-10 w-96 h-96 bg-[#FCBE1D] rounded-full blur-3xl animate-float"></div>
+        <div className="absolute top-10 right-10 w-96 h-96 bg-sucatao-yellow rounded-full blur-3xl animate-float"></div>
         <div
-          className="absolute bottom-10 left-10 w-80 h-80 bg-[#F54337] rounded-full blur-3xl animate-float"
+          className="absolute bottom-10 left-10 w-80 h-80 bg-sucatao-red rounded-full blur-3xl animate-float"
           style={{ animationDelay: "1s" }}
         />
       </div>
@@ -40,7 +40,7 @@ export function FinalCTASection() {
             }`}
           >
             Não deixe sua sucata parada —{" "}
-            <span className="text-[#FCBE1D]">transforme em lucro</span> hoje mesmo!
+            <span className="text-sucatao-yellow">transforme em lucro</span> hoje mesmo!
           </h2>
 
           <p
@@ -49,7 +49,7 @@ export function FinalCTASection() {
             }`}
             style={{ transitionDelay: "0.2s" }}
           >
-            Entre em contato agora e receba uma avaliação gratuita
+            Entre em contato agora e receba uma avaliação gratuita.
           </p>
 
           <div
@@ -63,7 +63,7 @@ export function FinalCTASection() {
               className="bg-linear-to-r from-[#FCBE1D] to-[#F54337] hover:shadow-2xl hover:shadow-[#FCBE1D]/50 transition-all font-bold text-lg px-10 py-7 animate-pulse-glow hover:cursor-pointer hover:scale-105"
               onClick={() => window.open("https://wa.me/5521999999999", "_blank")}
             >
-              💬 Fale com o Sucatão agora
+              Fale com o Sucatão agora
               <ArrowRight className="ml-2" />
             </Button>
           </div>

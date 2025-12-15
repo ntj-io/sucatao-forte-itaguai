@@ -9,7 +9,7 @@ export function AboutSection() {
   return (
     <section id="about" className="py-20 bg-neutral-100">
       <div className="container mx-auto px-4">
-        <div ref={ref} className="grid md:grid-cols-2 gap-12 items-center">
+        <div ref={ref} className="grid lg:grid-cols-2 gap-12 items-center">
           <div
             className={`transition-all duration-1000 ${isInView ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}
           >
@@ -49,7 +49,7 @@ export function AboutSection() {
           </div>
 
           <div
-            className={`relative transition-all duration-1000 ${isInView ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"}`}
+            className={`hidden md:block relative transition-all duration-1000 ${isInView ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"}`}
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <video
