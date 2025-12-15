@@ -39,7 +39,7 @@ export function LocationSection() {
                 </div>
                 <div>
                   <h3 className="font-bold text-lg mb-2 text-sucatao-black">Endereço</h3>
-                  <p className="text-gray-600">Itaguaí, Rio de Janeiro</p>
+                  <p className="text-gray-600">R. Haroldo Rodrigues de Jesus, 435 - Monte Serrat, Itaguaí - RJ, 23810-840</p>
                 </div>
               </div>
 
@@ -48,8 +48,8 @@ export function LocationSection() {
                   <Phone className="text-[#FCBE1D]" size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg mb-2 text-sucatao-black">Telefone</h3>
-                  <p className="text-gray-600">(21) 99999-9999</p>
+                  <h3 className="font-bold text-lg mb-2 text-sucatao-black">Telefone/WhatsApp</h3>
+                  <p className="text-gray-600">(21) 99845-3447</p>
                 </div>
               </div>
 
@@ -59,15 +59,14 @@ export function LocationSection() {
                 </div>
                 <div>
                   <h3 className="font-bold text-lg mb-2 text-sucatao-black">Horário</h3>
-                  <p className="text-gray-600">Segunda a Sexta: 8h às 18h</p>
-                  <p className="text-gray-600">Sábado: 8h às 12h</p>
+                  <p className="text-gray-600">Segunda a Sexta: 8h às 17h</p>
                 </div>
               </div>
 
               <Button
                 size="lg"
-                className="w-full bg-linear-to-r from-[#157EC2] to-[#F54337] hover:shadow-xl font-bold"
-                onClick={() => window.open("https://maps.google.com", "_blank")}
+                className="w-full bg-linear-to-r from-[#157EC2] to-[#F54337] hover:shadow-xl font-bold hover:scale-105 hover:cursor-pointer transition-all duration-200"
+                onClick={() => window.open("https://www.google.com/maps/dir//Sucat%C3%A3o+Forte+Itagua%C3%AD+-+R.+Haroldo+Rodrigues+de+Jesus,+435+-+Monte+Serrat,+Itagua%C3%AD+-+RJ,+23810-840/@-22.8748687,-43.7683705,1001m/data=!3m1!1e3!4m16!1m7!3m6!1s0x9bf9bf9891ec6f:0xed97978d80048eb8!2sSucat%C3%A3o+Forte+Itagua%C3%AD!8m2!3d-22.8748687!4d-43.7683705!16s%2Fg%2F11xclr7fw2!4m7!1m0!1m5!1m1!1s0x9bf9bf9891ec6f:0xed97978d80048eb8!2m2!1d-43.7683705!2d-22.8748687?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D", "_blank")}
               >
                 Traçar rota
               </Button>

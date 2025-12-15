@@ -61,7 +61,7 @@ export function FinalCTASection() {
             <Button
               size="lg"
               className="bg-linear-to-r from-[#FCBE1D] to-[#F54337] hover:shadow-2xl hover:shadow-[#FCBE1D]/50 transition-all font-bold text-lg px-10 py-7 animate-pulse-glow hover:cursor-pointer hover:scale-105"
-              onClick={() => window.open("https://wa.me/5521999999999", "_blank")}
+              onClick={() => window.open("https://wa.me/5521998453447", "_blank")}
             >
               Fale com o Sucatão agora
               <ArrowRight className="ml-2" />

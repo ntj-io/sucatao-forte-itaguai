@@ -2,11 +2,12 @@
 
 import type React from "react"
 
-import { Instagram, MessageCircle } from "lucide-react"
+import { Instagram } from "lucide-react"
+import { SiWhatsapp } from "react-icons/si"
 
 const redesSociais = [
   { link: "https://www.instagram.com/sucatao.forte.itaguai/", icon: Instagram, color: "#E4405F" },
-  { link: "https://whatsapp.com", icon: MessageCircle, color: "#0A66C2" },
+  { link: "https://wa.me/5521998453447", icon: SiWhatsapp, color: "#25D366" },
 ]
 
 export function Footer() {
@@ -22,14 +23,12 @@ export function Footer() {
           <div className="flex flex-col items-center">
             <h4 className="font-bold mb-4">Redes Sociais</h4>
             <div className="flex gap-4">
-              {[
-                { icon: Instagram, color: "#E4405F" },
-                { icon: MessageCircle, color: "#0A66C2" },
-              ].map((social, index) => (
+              {redesSociais.map((social, index) => (
                 <a
                   key={index}
-                  href={redesSociais[index].link}
+                  href={social.link}
                   target="_blank"
+                  rel="noreferrer"
                   className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:scale-110 hover:bg-white/20 transition-all metallic-hover"
                   style={{ "--hover-color": social.color } as React.CSSProperties}
                 >

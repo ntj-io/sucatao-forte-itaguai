@@ -41,8 +41,7 @@ export function Header() {
     { label: "Como Funciona", id: "how-it-works" },
     { label: "Benefícios", id: "benefits" },
     // { label: "Galeria", id: "gallery" },
-    { label: "Localização", id: "location" },
-    { label: "Contato", id: "contact" },
+    { label: "Localização", id: "location" }
   ]
 
   const menuItemsMobile = [
@@ -52,8 +51,7 @@ export function Header() {
     { label: "Como Funciona", id: "how-it-works" },
     { label: "Benefícios", id: "benefits" },
     // { label: "Galeria", id: "gallery" },
-    { label: "Localização", id: "location" },
-    { label: "Contato", id: "contact" },
+    { label: "Localização", id: "location" }
   ]
 
   return (
@@ -65,7 +63,11 @@ export function Header() {
     >
       <div className="container mx-auto px-4"> 
         <div className="flex items-center justify-between h-20">
-          <div className="hidden 2xl:block text-2xl font-russo-one text-sucatao-black">Sucatão Forte Itaguaí</div>
+          <div className="hidden 2xl:block text-2xl font-russo-one text-sucatao-black">
+            <span className="text-sucatao-blue">S</span>ucatão 
+            <span className="text-sucatao-red"> F</span>orte 
+            <span className="text-sucatao-yellow"> I</span>taguaí
+          </div>
           
           <div className={`2xl:hidden bg-sucatao-white px-2 ${isScrolled ? "shadow-lg shadow-sucatao-black/20 py-6 rounded-b-full hover:cursor-pointer hover:scale-105" : ""}`}
             onClick={() => scrollToSection("hero")}

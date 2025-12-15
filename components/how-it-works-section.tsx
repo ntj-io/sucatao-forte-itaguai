@@ -56,7 +56,7 @@ export function HowItWorksSection() {
 
         <div className="relative max-w-6xl mx-auto">
           {/* Connection Line */}
-          <div className="hidden lg:block absolute top-24 left-0 right-0 h-1 bg-linear-to-r from-[#F54337] via-[#FCBE1D] via-[#157EC2] to-[#4CAF50] opacity-20"></div>
+          <div className="hidden lg:block absolute top-24 left-0 right-0 h-1 bg-[linear-gradient(to_right,#F54337,#FCBE1D,#157EC2,#4CAF50)] opacity-20"></div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {steps.map((step, index) => (

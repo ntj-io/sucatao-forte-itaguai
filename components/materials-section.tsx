@@ -2,46 +2,88 @@
 
 import { useInView } from "@/hooks/use-in-view"
 import { Button } from "@/components/ui/button"
-import { Box, Zap, CircleDot, Wrench, Cpu, Factory, X, ChevronRight } from "lucide-react"
+import { Box, Zap, CircleDot, Wrench, Cpu, Factory, X, ChevronRight, Recycle } from "lucide-react"
 import { useState } from "react"
 
 const materials = [
   {
-    icon: Box,
-    name: "Metais Ferrosos",
-    color: "#8B4513",
-    items: ["Ferro", "Aço", "Chapas", "Vigas", "Sucata Pesada", "Estruturas Metálicas"],
-  },
-  {
-    icon: Zap,
-    name: "Não-Ferrosos",
-    color: "#C0C0C0",
-    items: ["Alumínio", "Chapas de Alumínio", "Perfis", "Esquadrias", "Panelas"],
-  },
-  {
-    icon: CircleDot,
-    name: "Cobre e Derivados",
-    color: "#B87333",
-    items: ["Cobre", "Fios de Cobre", "Tubos", "Radiadores", "Cabos Elétricos"],
-  },
-  {
-    icon: Wrench,
-    name: "Latão e Ligas",
-    color: "#DAA520",
-    items: ["Latão", "Bronze", "Torneiras", "Conexões", "Peças Industriais"],
+    icon: Recycle, // Ícone sugerido para esta nova categoria
+    name: "Papel e Plásticos",
+    color: "#4CAF50",
+    items: [
+      "Papelão", 
+      "Plástico Duro", 
+      "PET"
+    ],
   },
   {
     icon: Cpu,
     name: "Eletrônicos",
     color: "#2196F3",
-    items: ["Computadores", "Placas", "Cabos", "Monitores", "Celulares", "Impressoras"],
+    items: [
+      "Lixo Eletrônico (Geral)", // Item da lista
+      "Computadores e Notebooks", 
+      "Placas de Circuito", 
+      "Celulares e Tablets", 
+      "Fios e Cabos", 
+      "Impressoras e Periféricos"
+    ],
+  },
+  {
+    icon: Box,
+    name: "Metais Ferrosos",
+    color: "#8B4513",
+    items: [
+      "Metal", 
+      "Estamparia/Chaparia", 
+      "Sucata Pesada", 
+      "Sucata Mista"
+    ],
+  },
+  {
+    icon: Zap,
+    name: "Alumínio e Não-Ferrosos",
+    color: "#C0C0C0",
+    items: [
+      "Alumínio", 
+      "Alumínio Duro", 
+      "Latinha", 
+      "Limalha de Alumínio", 
+      "Panela Limpa", 
+      "Panela Suja", 
+      "Perfil Limpo", 
+      "Perfil Estrutural",
+      "Radiador Alumínio",
+      "Spray (alumínio)"
+    ],
+  },
+  {
+    icon: CircleDot,
+    name: "Cobre e Derivados",
+    color: "#B87333",
+    items: [
+      "Cobre 1ª", 
+      "Cobre 2ª", 
+      "Radiador Cob/Al"
+    ],
+  },
+  {
+    icon: Wrench,
+    name: "Ligas e Especiais",
+    color: "#DAA520",
+    items: [
+      "Antimônio" ,
+    ],
   },
   {
     icon: Factory,
-    name: "Sucata Industrial",
+    name: "Sucata Industrial e Motores",
     color: "#607D8B",
-    items: ["Máquinas", "Equipamentos", "Motores", "Peças Industriais", "Transformadores"],
-  },
+    items: [
+      "Motor Geladeira P", 
+      "Motor Geladeira G"
+    ],
+  }
 ]
 
 export function MaterialsSection() {
@@ -104,10 +146,10 @@ export function MaterialsSection() {
         <div className="text-center">
           <Button
             size="lg"
-            className="bg-linear-to-r from-[#FCBE1D] to-[#F54337] hover:shadow-2xl hover:shadow-[#FCBE1D]/50 transition-all font-bold text-lg px-8 py-6 animate-pulse-glow hover:cursor-pointer hover:scale-105"
-            onClick={() => window.open("https://wa.me/5521999999999", "_blank")}
+            className="bg-linear-to-r from-sucatao-yellow to-sucatao-red hover:shadow-2xl hover:shadow-sucatao-yellow/50 transition-all font-bold sm:text-lg px-8 py-6 animate-pulse-glow hover:cursor-pointer hover:scale-105"
+            onClick={() => window.open("https://wa.me/5521998453447", "_blank")}
           >
-            Tenho esse material → Falar no WhatsApp
+            Falar no WhatsApp
           </Button>
         </div>
       </div>
@@ -121,9 +163,9 @@ export function MaterialsSection() {
           />
 
           {/* Modal */}
-          <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] max-w-2xl max-h-[85vh] bg-linear-to-br from-[#157EC2] via-[#1565C0] to-[#0D47A1] z-50 shadow-2xl rounded-2xl animate-scale-in overflow-hidden flex flex-col">
+          <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] max-w-2xl max-h-[85vh] bg-neutral-100 z-50 shadow-2xl rounded-2xl animate-scale-in overflow-hidden flex flex-col">
             {/* Header */}
-            <div className="bg-linear-to-r from-[#0D47A1] to-[#157EC2] p-6 border-b-2 border-white/20 shrink-0">
+            <div className="bg-sucatao-white p-6 border-b-2 shrink-0" style={{ borderColor: materials[selectedMaterial].color }}>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div
@@ -132,50 +174,50 @@ export function MaterialsSection() {
                   >
                     {(() => {
                       const Icon = materials[selectedMaterial].icon
-                      return <Icon size={28} className="text-white" />
+                      return <Icon style={{ color: materials[selectedMaterial].color }} size={28}/>
                     })()}
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-white">{materials[selectedMaterial].name}</h3>
-                    <p className="text-white/70 text-sm">Confira os materiais aceitos</p>
+                    <h3 className="text-2xl font-bold">{materials[selectedMaterial].name}</h3>
+                    <p className="text-black/70 text-sm">Confira os materiais aceitos</p>
                   </div>
                 </div>
                 <button
                   onClick={() => setSelectedMaterial(null)}
-                  className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all hover:rotate-90"
+                  className="w-10 h-10 rounded-full bg-white/10 hover:bg-black/5 flex items-center justify-center transition-all hover:rotate-90 hover:cursor-pointer"
                 >
-                  <X size={24} className="text-white" />
+                  <X size={24} className="text-black" />
                 </button>
               </div>
             </div>
 
             <div className="flex-1 overflow-y-auto p-6">
-              <h4 className="text-white/80 text-sm font-semibold mb-4 uppercase tracking-wider">Materiais Aceitos</h4>
+              <h4 className="text-black/80 text-sm font-semibold mb-4 uppercase tracking-wider">Materiais Aceitos</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
                 {materials[selectedMaterial].items.map((item, index) => (
                   <div
                     key={index}
-                    className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 hover:bg-white/20 transition-all hover:scale-[1.02] animate-fade-in"
+                    className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-black/20 hover:bg-black/20 transition-all hover:scale-[1.02] animate-fade-in"
                     style={{ animationDelay: `${index * 50}ms` }}
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-[#FCBE1D] animate-pulse"></div>
-                      <span className="text-white font-medium">{item}</span>
+                      <div className={`w-2 h-2 rounded-full animate-pulse`} style={{ backgroundColor: materials[selectedMaterial].color }}></div>
+                      <span className="font-medium">{item}</span>
                     </div>
                   </div>
                 ))}
               </div>
 
               {/* CTA Section */}
-              <div className="p-6 bg-white/10 backdrop-blur-sm rounded-xl border-2 border-white/20">
-                <h4 className="text-white font-bold text-lg mb-2">Tem esse material?</h4>
-                <p className="text-white/70 text-sm mb-4">
+              <div className="p-6 bg-white/10 backdrop-blur-sm rounded-xl border-2 border-black/20">
+                <h4 className="font-bold text-lg mb-2">Tem esse material?</h4>
+                <p className="text-black/70 text-sm mb-4">
                   Entre em contato conosco e receba uma cotação personalizada!
                 </p>
                 <Button
                   size="lg"
-                  className="w-full bg-linear-to-r from-[#FCBE1D] to-[#F54337] hover:shadow-xl hover:scale-105 transition-all font-bold"
-                  onClick={() => window.open("https://wa.me/5521999999999", "_blank")}
+                  className="w-full bg-linear-to-r from-sucatao-yellow to-sucatao-red hover:shadow-xl hover:scale-105 transition-all font-bold hover:cursor-pointer"
+                  onClick={() => window.open("https://wa.me/5521998453447", "_blank")}
                 >
                   Falar no WhatsApp
                 </Button>

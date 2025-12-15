@@ -20,11 +20,12 @@ export default function Home() {
       <MaterialsSection />
       <HowItWorksSection />
       <BenefitsSection />
+      {/* <GallerySection /> */}
       <TestimonialsSection />
       <LocationSection />
       <FinalCTASection />
       <Footer />
-      {/* <WhatsAppButton /> */}
+      <WhatsAppButton />
     </main>
   )
 }
