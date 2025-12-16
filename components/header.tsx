@@ -37,10 +37,10 @@ export function Header() {
     { label: "Início", id: "hero" },
     { label: "Sobre", id: "about" },
     { label: "Materiais", id: "materials" },
-    { label: "Foto", id: "photo" },
     { label: "Como Funciona", id: "how-it-works" },
+    { label: "Foto", id: "photo" },
     { label: "Benefícios", id: "benefits" },
-    // { label: "Galeria", id: "gallery" },
+    { label: "Galeria", id: "gallery" },
     { label: "Localização", id: "location" }
   ]
 
@@ -50,7 +50,7 @@ export function Header() {
     { label: "Materiais", id: "materials" },
     { label: "Como Funciona", id: "how-it-works" },
     { label: "Benefícios", id: "benefits" },
-    // { label: "Galeria", id: "gallery" },
+    { label: "Galeria", id: "gallery" },
     { label: "Localização", id: "location" }
   ]
 
@@ -64,9 +64,7 @@ export function Header() {
       <div className="container mx-auto px-4"> 
         <div className="flex items-center justify-between h-20">
           <div className="hidden 2xl:block text-2xl font-russo-one text-sucatao-black">
-            <span className="text-sucatao-blue">S</span>ucatão 
-            <span className="text-sucatao-red"> F</span>orte 
-            <span className="text-sucatao-yellow"> I</span>taguaí
+            Sucatão Forte Itaguaí
           </div>
           
           <div className={`2xl:hidden bg-sucatao-white px-2 ${isScrolled ? "shadow-lg shadow-sucatao-black/20 py-6 rounded-b-full hover:cursor-pointer hover:scale-105" : ""}`}
@@ -101,7 +99,7 @@ export function Header() {
                       className="inline-block mx-4"
                     />
                   </div>
-                ) : item.id === "how-it-works" ? (
+                ) : item.id === "benefits" ? (
                   <div className="-ml-6 2xl:ml-0">{item.label}</div>
                 ) : (
                   item.label

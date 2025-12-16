@@ -77,7 +77,7 @@ const materials = [
   },
   {
     icon: Factory,
-    name: "Sucata Industrial e Motores",
+    name: "Motores",
     color: "#607D8B",
     items: [
       "Motor Geladeira P", 

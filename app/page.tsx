@@ -20,7 +20,7 @@ export default function Home() {
       <MaterialsSection />
       <HowItWorksSection />
       <BenefitsSection />
-      {/* <GallerySection /> */}
+      <GallerySection />
       <TestimonialsSection />
       <LocationSection />
       <FinalCTASection />
