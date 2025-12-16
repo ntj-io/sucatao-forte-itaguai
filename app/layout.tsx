@@ -17,24 +17,53 @@ const russoOne = Russo_One({
 })
 
 export const metadata: Metadata = {
-  title: "Sucatão Forte Itaguaí - Compra e venda de Sucatas",
-  description: "Compramos e vendemos sucata com o melhor preço da região. Sustentabilidade e pagamento justo.",
-  generator: "v0.app",
-  icons: {
-    icon: [
+  metadataBase: new URL("https://www.sucataoforteitaguai.com.br"),
+
+  title: {
+    default: "Sucatão Forte Itaguaí",
+    template: "%s | Sucatão Forte Itaguaí",
+  },
+
+  description:
+    "Sucatão Forte em Itaguaí. Compra e venda de sucata com pagamento justo, sustentabilidade e melhor preço da região.",
+
+  keywords: [
+    "Sucatão Forte",
+    "Sucata em Itaguaí",
+    "Compra de sucata Itaguaí",
+    "Venda de sucata",
+    "Ferro velho Itaguaí",
+    "Sucata RJ",
+  ],
+
+  openGraph: {
+    title: "Sucatão Forte Itaguaí",
+    description:
+      "Compra e venda de sucata em Itaguaí com o melhor preço da região. Sustentabilidade e confiança.",
+    url: "https://www.sucataoforte.com.br",
+    siteName: "Sucatão Forte",
+    images: [
       {
-        url: "/SFI-Dark.svg",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/SFI.svg",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/SFI-Dark.svg",
-        type: "image/svg+xml",
+        url: "/og-image.png", 
+        width: 1200,
+        height: 630,
+        alt: "Sucatão Forte Itaguaí",
       },
     ],
+    locale: "pt_BR",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Sucatão Forte Itaguaí",
+    description:
+      "Compra e venda de sucata com pagamento justo e melhor preço em Itaguaí.",
+    images: ["/og-image.png"],
+  },
+
+  icons: {
+    icon: "/SFI-Dark.svg",
     apple: "/apple-icon.png",
   },
 }
