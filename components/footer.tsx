@@ -16,13 +16,12 @@ export function Footer() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between mb-4">
           <div>
-            <h3 className="text-2xl font-bold text-white mb-4">Sucatão Forte Itaguaí</h3>
-            <p className="text-gray-400">Transformando sucata em valor com sustentabilidade e compromisso.</p>
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">Sucatão Forte Itaguaí</h3>
+            <p className="text-sm sm:text-base text-gray-400">Transformando sucata em valor com sustentabilidade e compromisso.</p>
           </div>
 
           <div className="flex flex-col items-center">
-            <h4 className="font-bold mb-4">Redes Sociais</h4>
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               {redesSociais.map((social, index) => (
                 <a
                   key={index}
@@ -39,7 +38,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/20 pt-4 text-center text-gray-400">
+        <div className="text-xs sm:text-base border-t border-white/20 pt-4 text-center text-gray-400">
           <p>© 2025 Sucatão Forte Itaguaí — Todos os direitos reservados.</p>
         </div>
       </div>
